@@ -7,6 +7,8 @@ import Contact from './components/Contact'
 
 /* eslint-disable no-new */
 
+Vue.use(VueRouter)
+
 const router = new VueRouter({
   routes: [
     {path: '/', component: Hello},

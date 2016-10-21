@@ -11,8 +11,8 @@
         <ul class="nav navbar-nav">
           <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
           <li><a href="#">Link</a></li>-->
-          <router-link tag="li" to="/about">About</router-link>
-          <router-link to="/contact">Contact</router-link>
+          <li><router-link to="/about">About</router-link></li>
+          <li><router-link to="/contact">Contact</router-link></li>
         </ul>
       </div>
     </div>

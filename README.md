@@ -1,4 +1,5 @@
-# pokevue
+No stress with Vue.js
+=====================
 
 > A Vue.js project
 
