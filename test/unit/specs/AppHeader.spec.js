@@ -2,12 +2,13 @@ import Vue from 'vue'
 import AppHeader from 'src/components/AppHeader'
 
 describe('AppHeader.vue', () => {
-  it('should render correct contents', () => {
-    const vm = new Vue({
-      el: document.createElement('div'),
-      render: (h) => h(AppHeader)
-    })
-    expect(vm.$el.textContent)
-      .to.contains('application title')
+  const vm = new Vue({
+    el: document.createElement('div'),
+    render: (h) => h(AppHeader)
+  })
+  it('should render correct links', () => {
+    const content = vm.$el.textContent
+    expect(content).to.contains('About')
+    expect(content).to.contains('Contact')
   })
 })
