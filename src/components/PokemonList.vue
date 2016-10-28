@@ -1,9 +1,10 @@
 <template>
   <div class="pokemon-list">
     <ul class="pokemons">
-      <li class="pokemon" v-for="pokemon in pokemons">
-        <h3>{{ pokemon.name }}</h3>
-        <img :src="pokemon.imageUrl">
+      <li class="pokemon col-md-3" v-for="pokemon in pokemons">
+        <img class="image" :src="pokemon.imageUrl">
+        <p class="id">#{{ pokemon.id }}</p>
+        <h3 class="name">{{ pokemon.name }}</h3>
       </li>
     </ul>
   </div>
@@ -49,7 +50,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  li {
-    text-align: left
+  .pokemons {
+    list-style-type: none;
+    padding: 0;
   }
+
+  .pokemon .name {
+    text-align: center;
+    text-transform: capitalize;
+  }
+  .pokemon .id {
+      color: #999;
+  }
+  .pokemon .image {
+  }
+
 </style>
