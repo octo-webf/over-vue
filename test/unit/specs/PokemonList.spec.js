@@ -2,10 +2,11 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import PokemonList from 'src/components/PokemonList'
 
-
 describe('PokemonList.vue', () => {
+
   const Ctor = Vue.extend(PokemonList)
   let vm
+
   before(function() {
     Vue.use(VueResource)
   })
@@ -16,7 +17,7 @@ describe('PokemonList.vue', () => {
     expect(vm.$el.querySelector('ul.pokemons')).to.exist
   })
 
-  it('should the correct number of list items', () => {
+  it('should render the correct number of pokemons', () => {
     vm = new Ctor({
       el: document.createElement('div'),
       data: {

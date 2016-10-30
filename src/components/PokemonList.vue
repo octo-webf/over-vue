@@ -32,15 +32,13 @@
         pokemons: []
       }
     },
-    mounted () {
+    created () {
       return this.$http.get('http://pokeapi.co/api/v2/pokemon/').then(response => {
         const pokemonImageBankUrl = 'http://assets.pokemon.com/assets/cms2/img/pokedex/detail'
-        this.pokemons = response.body.results
-        this.pokemons = this.pokemons.map(function (pokemon) {
+        this.pokemons = response.body.results.map(function (pokemon) {
           const pokemonId = convertNumberIntoStringWithLeadingZeros(getPokedexIdFromItsUrl(pokemon), 3)
           pokemon.id = pokemonId
           pokemon.imageUrl = `${pokemonImageBankUrl}/${pokemonId}.png`
-          console.log(pokemon)
           return pokemon
         })
       })
@@ -59,9 +57,11 @@
     text-align: center;
     text-transform: capitalize;
   }
+
   .pokemon .id {
-      color: #999;
+    color: #999;
   }
+
   .pokemon .image {
   }
 
