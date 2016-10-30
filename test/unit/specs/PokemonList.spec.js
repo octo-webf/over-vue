@@ -3,16 +3,17 @@ import VueResource from 'vue-resource'
 import PokemonList from 'src/components/PokemonList'
 
 describe('PokemonList.vue', () => {
-
   const Ctor = Vue.extend(PokemonList)
   let vm
-
-  before(function() {
-    Vue.use(VueResource)
+  before(function () {
+//    Vue.use(VueResource)
   })
   it('should render a list', () => {
     vm = new Ctor({
-      el: document.createElement('div')
+      el: document.createElement('div'),
+      $http: {
+        get: sinon.spy()
+      }
     })
     expect(vm.$el.querySelector('ul.pokemons')).to.exist
   })
@@ -23,12 +24,12 @@ describe('PokemonList.vue', () => {
       data: {
         pokemons: [
           {
-            url: "http://pokeapi.co/api/v2/pokemon/1/",
-            name: "bulbasaur"
+            url: 'http://pokeapi.co/api/v2/pokemon/1/',
+            name: 'bulbasaur'
           },
           {
-            url: "http://pokeapi.co/api/v2/pokemon/2/",
-            name: "ivysaur"
+            url: 'http://pokeapi.co/api/v2/pokemon/2/',
+            name: 'ivysaur'
           }]
       }
     })
@@ -37,8 +38,8 @@ describe('PokemonList.vue', () => {
 
   it('should call the pokemon api to retrieve the pokemon list', () => {
     const vm = new Ctor({
-      el: document.createElement('div')
-    });
+      el: document.createElement('div'),
+    })
     expect(vm.$el.querySelectorAll('li.pokemon').length).to.equal(2)
   })
 })
