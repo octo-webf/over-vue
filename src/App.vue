@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import Hello from './components/Hello'
-import AppHeader from './components/AppHeader'
-import Bootstrap from 'bootstrap'
+import Bootstrap from 'bootstrap';
+import Hello from './components/Hello';
+import AppHeader from './components/AppHeader';
 
 export default {
   name: 'app',
@@ -17,7 +17,7 @@ export default {
     Hello,
     Bootstrap
   }
-}
+};
 </script>
 
 <style scoped>

@@ -1,17 +1,17 @@
-import Vue from 'vue'
-import VueResource from 'vue-resource'
-Vue.use(VueResource)
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+import PokemonList from 'src/components/PokemonList';
 
-import PokemonList from 'src/components/PokemonList'
+Vue.use(VueResource);
 
 describe('PokemonList.vue', () => {
-  const Ctor = Vue.extend(PokemonList)
-  let vm
+  const Ctor = Vue.extend(PokemonList);
+  let vm;
 
   it('should render a list', () => {
-    vm = new Ctor().$mount()
-    expect(vm.$el.querySelector('ul.pokemons')).to.exist
-  })
+    vm = new Ctor().$mount();
+    expect(vm.$el.querySelector('ul.pokemons')).to.exist;
+  });
 
   it('should render the correct number of pokemons', () => {
     vm = new Ctor({
@@ -20,13 +20,13 @@ describe('PokemonList.vue', () => {
           { url: 'http://pokeapi.co/api/v2/pokemon/1/', name: 'bulbasaur' },
           { url: 'http://pokeapi.co/api/v2/pokemon/2/', name: 'ivysaur' }]
       }
-    }).$mount()
-    expect(vm.$el.querySelectorAll('li.pokemon').length).to.equal(2)
-  })
+    }).$mount();
+    expect(vm.$el.querySelectorAll('li.pokemon').length).to.equal(2);
+  });
 
   it('should call the pokemon api to retrieve the pokemon list', () => {
     // before
-    let promiseCall = sinon.stub(Vue, 'http').returnsPromise()
+    const promiseCall = sinon.stub(Vue, 'http').returnsPromise();
 
     // given
     promiseCall.resolves({
@@ -49,20 +49,20 @@ describe('PokemonList.vue', () => {
         ],
         next: 'http://pokeapi.co/api/v2/pokemon/?offset=20'
       }
-    })
+    });
 
     // when
-    vm = new Ctor().$mount()
+    vm = new Ctor().$mount();
 
     // then
-    expect(promiseCall).to.have.been.called
+    expect(promiseCall).to.have.been.called;
     expect(promiseCall).to.have.been.calledWith({
       method: 'get',
       url: 'http://pokeapi.co/api/v2/pokemon/'
-    })
-    expect(vm.$el.querySelectorAll('li.pokemon').length).to.equal(3)
+    });
+    expect(vm.$el.querySelectorAll('li.pokemon').length).to.equal(3);
 
     // after
-    Vue.http.restore()
-  })
-})
+    Vue.http.restore();
+  });
+});

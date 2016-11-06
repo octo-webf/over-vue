@@ -3,7 +3,7 @@
 </template>
 
 <script>
-export default {
-  name: 'about-view'
-}
+  export default {
+    name: 'about-view'
+  };
 </script>

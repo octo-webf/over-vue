@@ -9,24 +9,24 @@
 </template>
 
 <script>
-  import PokemonCard from 'src/components/PokemonCard.vue'
+  import PokemonCard from 'src/components/PokemonCard';
 
   export default {
     name: 'pokemon-list',
     components: {
       PokemonCard
     },
-    data () {
+    data() {
       return {
         pokemons: []
-      }
+      };
     },
-    created () {
-      return this.$http.get('http://pokeapi.co/api/v2/pokemon/').then(response => {
-        this.pokemons = response.body.results
-      })
+    created() {
+      return this.$http.get('http://pokeapi.co/api/v2/pokemon/').then((response) => {
+        this.pokemons = response.body.results;
+      });
     }
-  }
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

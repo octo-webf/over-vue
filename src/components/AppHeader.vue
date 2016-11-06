@@ -23,12 +23,12 @@
 <script>
   export default {
     name: 'app-header',
-    data () {
+    data() {
       return {
         msg: 'application title'
-      }
+      };
     }
-  }
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

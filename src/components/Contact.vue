@@ -3,7 +3,7 @@
 </template>
 
 <script>
-export default {
-  name: 'contact-view'
-}
+  export default {
+    name: 'contact-view'
+  };
 </script>
