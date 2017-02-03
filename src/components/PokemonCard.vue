@@ -3,10 +3,15 @@
     <img class="image" :src="pokemonImageUrl">
     <p class="id">#{{ pokemonId }}</p>
     <h3 class="name">{{ pokemon.name }}</h3>
+    <button v-on:click="showSheet = true"> Show Sheet</button>
+    <h1>{{ showSheet }}</h1>
+    <pokemon-sheet :pokemon="pokemon" v-if="showSheet" @close="showSheet = false"></pokemon-sheet>
   </div>
 </template>
 
 <script>
+  import PokemonSheet from 'src/components/PokemonSheet';
+
   function getPokedexIdFromItsUrl(pokemon) {
     if (!pokemon.url) {
       return 'N/A';
@@ -23,6 +28,12 @@
 
   export default {
     name: 'pokemon-card',
+    components: {
+      PokemonSheet
+    },
+    data() {
+      return { showSheet: false };
+    },
     props: ['pokemon'],
     computed: {
       pokemonId() {
